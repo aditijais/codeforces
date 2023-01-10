@@ -15,7 +15,7 @@ function Navbar() {
       .then(Response=>Response.json())
       .then((data)=>{
         console.log(data);
-        setUser(data.data);
+        setUser(data.result[0]);
       })
    } 
     // const getUsers= async() => {
@@ -42,11 +42,15 @@ function Navbar() {
       <button onClick={handleonsubmit}>Search</button>
       
     </div>
-    <div>{JSON.stringify(user)}</div>
-    <div>{user.rating}</div>
-    <div>{user.maxRank}</div>
-    <div>{user.maxRating}</div>
-    
+    <div className="users">
+    <userinfo className="user--info">
+       <p>Handle : {user.handle}</p>
+       <p>Rating : {user.rating}</p>
+       <p>maxRank: {user.maxRank}</p>
+       <p>maxRating : {user.maxRating}</p>
+    </userinfo>
+    <img src={user.titlePhoto} alt=" "/>
+    </div>
     </>
   );
 }
