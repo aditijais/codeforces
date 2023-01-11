@@ -4,7 +4,7 @@ import {useState} from "react";
 function Navbar() {
   
   const [handle,setHandle] = useState();
-  const [user,setUser] = useState([]);
+  const [users,setUsers] = useState([]);
   const inputEvent=(e)=>{
     setHandle(e.target.value);
   }
@@ -15,7 +15,7 @@ function Navbar() {
       .then(Response=>Response.json())
       .then((data)=>{
         console.log(data);
-        setUser(data.result[0]);
+        setUsers(data.result[0]);
       })
    } 
     // const getUsers= async() => {
@@ -44,12 +44,12 @@ function Navbar() {
     </div>
     <div className="users">
     <userinfo className="user--info">
-       <p>Handle : {user.handle}</p>
-       <p>Rating : {user.rating}</p>
-       <p>maxRank: {user.maxRank}</p>
-       <p>maxRating : {user.maxRating}</p>
+       <p>Handle : {users.handle}</p>
+       <p>Rating : {users.rating}</p>
+       <p>maxRank: {users.maxRank}</p>
+       <p>maxRating : {users.maxRating}</p>
     </userinfo>
-    <img src={user.titlePhoto} alt=" "/>
+    <img src={users.titlePhoto} alt=" "/>
     </div>
     </>
   );
