@@ -6,12 +6,12 @@ function Navbar() {
   const [handle,setHandle] = useState();
   const [users,setUsers] = useState([]);
   const inputEvent=(e)=>{
-    setLocation(e.target.value);
+    setHandle(e.target.value);
   }
    const handleonsubmit=(e)=>{
       e.preventDefault();
-      console.log(location);
-      fetch(`https://api.weatherapi.com/v1/current.json?key=970b42fd54bd40d69e7120153231101&q=${location}&aqi=no`)
+      console.log(handle);
+      fetch(`https://codeforces.com/api/user.info?handles=${handle}`)
       .then(Response=>Response.json())
       .then((data)=>{
         console.log(data);
@@ -36,7 +36,7 @@ function Navbar() {
     <img src="/images/cflogo.jpg" alt=" " className="cf--logo"/>
     </div>
     <div className="nav--search">
-      <input type='text' placeholder='Enter Location...' className="input--search"
+      <input type='text' placeholder='Enter your Handle...' className="input--search"
       onChange={inputEvent}/>
       <br/>
       <button onClick={handleonsubmit}>Search</button>
